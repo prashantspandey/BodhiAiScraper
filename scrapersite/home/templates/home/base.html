@@ -1,0 +1,33 @@
+<html>
+	<head>
+	
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	</head>
+
+<body>
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="{%if at_home %}active{%endif%}"><a href="{% url 'home:index' %}">New and Trending</a></li>
+<li role="presentation" class="{%if at_worldNews %}active  {%endif%}"><a href="{% url 'home:worldNews_section' %}">World </a></li>
+<li role="presentation" class="{%if at_indiaNews %}active {%endif%}"><a href="{% url 'home:indiaNews_section' %}">India</a></li>
+<li role="presentation" class="{%if at_sports %} active {%endif%}"><a href="{% url 'home:sports_section' %}">Sports</a></li>
+<li role="presentation" class="{%if at_movies %} active {%endif%}"><a href="{% url 'home:movies_section' %}">Entertainment and Movies</a></li>
+<li role="presentation" class="{%if at_scienceandtech %} active {%endif%}"><a href="{% url 'home:scienceandtech_section' %}">Science and Technology</a></li>
+
+
+
+	</ul>
+	{%block content%}
+
+	{%endblock content%}
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+{% extends 'home/base.html' %}
+<html>
+	<head>
+		<title> India News </title>
+	</head>
+
+	<body>
+		{%block content%}
+	
+		<h1 align='center'>India News</h1>
+		{% for i in posts %}
+		<div class="container">
+		<div class = 'row col-md-10 col-md-offset-1'>
+			
+<a href="{% url 'home:detail' i.headslug %}"><div class="page-header" style="text-align: center;">
+  <h2>{{i.headline}}<div style="text-align: center;"> <small><br>{{i.pub_date}}<br><br> Summary: </small></div></h2>
+</div></a>
+		
+		<div class="well" style="background: rgb(247, 249, 255);"><br> {{i.summary}}</div>
+		<p align='center'></p>
+		<p align='center'> Source: {{i.source}}</p>
+		<p align= 'center'>Tags:</p>
+		{%for tag in i.tags_set.all %}
+				
+		<div class = 'text-center'style= 'display:inline-block;float:center;text-align:center;position:relative;left:30%;'>
+			  <li class="list-group-item">
+  
+    {{tag.tag}}
+  </li>
+</ul>
+			</div>	
+	
+		{% endfor %}
+		<br><br>
+		</div>
+
+		{%endfor%}	
+
+<div class="pagination">
+    <span class="step-links">
+
+
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+		  {% if posts.has_previous %}
+		    <li>
+		      <a href="?indNew={{ posts.previous_page_number }}" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    {% endif %}
+		    <li>
+
+		      
+		    <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+		    </li>
+		    
+		      {% if posts.has_next %}
+		    <li>
+		      <a href="?indNew={{ posts.next_page_number }}" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		    {% endif %}
+		  </ul>
+		</nav>           
+    </span>
+</div>
+
+
+
+</div>	
+			{%endblock content%}
+	</body>
+</html>

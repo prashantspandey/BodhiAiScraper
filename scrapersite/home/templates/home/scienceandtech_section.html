@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+<html>
+	<head>
+		<title> Science and Technology Articles </title>
+	</head>
+	<body>
+		{% block content %}
+		<h1 class='text-center'> Science and Technology </h1>
+					{% for article in scienceTech_articles %}
+			<div class='row col-md-8 col-md-offset-2'>
+
+				<a href="{% url 'home:detail' article.headslug %}"><h3 align='center'>{{article.headline}}</h3></a>
+			<p align='center'>{{article.pub_date}}</p>
+			<p align='center'>{{article.summary}}</p>
+			<p align='center'>Source: {{article.source}}</p>
+			<p align='center'> Tags:</p>
+			{% for tag in article.tags_set.all %}
+<div class= 'text-center' style='display:inline-block;float:center;text-align:center;position:relative;left:40%;'>
+				{ {{tag.tag}} }
+			</div>
+			{%endfor%}
+		</div>
+		{%endfor%}
+		{%endblock%}
+	</body>
+</html>
+
+

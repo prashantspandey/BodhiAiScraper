@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+<html>
+	<head>
+		<title>{{post.headslug}}</title>
+	</head>
+	<body>
+
+		{%block content%}
+		<div class="content col-md-10">
+		<div class="col-md-offset-1">
+		<h1 align= center>{{post.headline}}</h1>
+		<h3 align = center> {{post.pub_date}}</h3>
+		<p align = center> {{post.body}}</p>
+
+		</div>
+		<h3 align="center"> Related Tweets: </h3>
+			{%for tw in post.tweets_set.all %}
+		<div class="col-md-offset-1">
+			{{tw.tweet}}
+		</div>
+		{%endfor%}
+		</div>
+				{%endblock content %}
+	</body>
+	
+
+</html>
